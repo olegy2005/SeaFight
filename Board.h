@@ -18,6 +18,9 @@ public:
 		}
 		createShips();
 	}
+
+	enum{WATER = ' ', SHIP = '#' };
+
 private:
 	void createBoard(std::istream& in);//создает €чейки, которые создают доску
 	bool isBoardCorrect() const;
