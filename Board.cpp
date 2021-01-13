@@ -6,6 +6,7 @@ void Board::createBoard(istream& in)
 	string line;
 	while (getline(in, line)) {//читает из in в line
 		vector<shared_ptr<Cell>> row;
+		row.push_back(make_shared<Water>(WATER));
 		for (auto c : line) {
 			shared_ptr<Cell> cell;
 			if (c == WATER) {
@@ -16,8 +17,14 @@ void Board::createBoard(istream& in)
 			}
 			row.push_back(cell);
 		}
+		row.push_back(make_shared<Water>(WATER));//чтобы справа последн€€ €чейка была водой
 		cells.push_back(row);
-	}
+	} //while
+
+	vector<shared_ptr<Cell>> row(cells[0].size(),
+		make_shared<Water>(WATER));
+	cells.insert(cells.begin(), row);
+	cells.push_back(row);
 }
 
 bool Board::isBoardCorrect() const
