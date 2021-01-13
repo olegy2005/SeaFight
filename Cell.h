@@ -25,3 +25,16 @@ public:
 		setSymbol('.');
 	}
 };
+
+class ShipPart : public Cell
+{
+public:
+	ShipPart(char c) : Cell(c)
+	{
+
+	}
+	void hit() override {
+		Cell::hit();
+		setSymbol('x');
+	}
+};
